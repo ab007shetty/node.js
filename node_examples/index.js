@@ -3,14 +3,17 @@ var rect = require('./rectangle');
 function solveRect(l,b) {
     console.log("Solving for rectangle with l = " + l + " and b = " + b);
 
-    if (l <= 0 || b <= 0) {
-        console.log("Rectangle dimensions should be greater than zero:  l = "
-               + l + ",  and b = " + b);
-    }
-    else {
-	    console.log("The area of the rectangle is " + rect.area(l,b));
-	    console.log("The perimeter of the rectangle is " + rect.perimeter(l,b));
-    }
+    rect(l,b, (err, recatangle) => {
+
+        if(err) {
+            console.log("Error:" , err.message);
+        }
+        else {
+            console.log("The area of the reactangle of dimensions l " + l + "and b = " + b + "is " + recatangle.area());
+            console.log("The area of the reactangle of dimensions l " + l + "and b = " + b + "is " + recatangle.perimeter());
+        }
+    });
+    console.log("This statement is after the call to rect")
 }
 
 
