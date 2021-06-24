@@ -28,6 +28,22 @@ app.use("/dishes", dishRouter);
 app.use("/promotions", promoRouter);
 app.use("/leaders", leaderRouter);
 
+const mongoose = require("mongoose");
+
+const Dishes = require("./models/dishes");
+
+const url = "mongodb://localhost:27017/conFusion";
+const connect = mongoose.connect(url);
+
+connect.then(
+  (db) => {
+    console.log("Connected correctly to the server");
+  },
+  (err) => {
+    console.log(err);
+  }
+);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
